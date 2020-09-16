@@ -1,0 +1,84 @@
+<block wx:if='{{cartNum>0}}'>
+    <navigator class='link_car' url='/pages/car_list/car_list' hover-class='none'>
+        <image src='http://yns.nhzhonglian.com/images/xcx/car1.png' mode='{{w_fit}}'></image>
+    </navigator>
+</block>
+
+<view class='banner'>
+    <swiper autoplay='{{$true}}' indicator-dots='{{$true}}' indicator-color='#ddd' indicator-active-color='#ea9c16'
+            duration='{{dur}}' class='banner-swiper' easing-function='linear'>
+        <block wx:for="{{banner_img}}" wx:key="id">
+            <swiper-item>
+                <image src='{{item.images}}' mode='{{fill}}' class='banner-img'></image>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+<view class='i1 search'>
+    <form class='block w-100' bindsubmit='search'>
+        <button class='dis-m' form-type='submit' hover-class='none'>
+            <image src='http://yns.nhzhonglian.com/images/xcx/search.png' mode='fit'></image>
+        </button>
+        <input type='text' bindconfirm="search" confirm-type='search' placeholder='请输入搜索关键字'
+               placeholder-style='color:#333' name='search' class='f-28 c-333 dis-m' focus='{{focus}}'
+               adjust-position='false'></input>
+    </form>
+</view>
+<view class='i2 w-93'>
+    <view class='T title1 pos-r'>
+        <view class='title'>
+            <text class='block cn f-60 c-333 blod'>关于</text>
+            <text class='block en f-24 c-999 text-u'>ABOUT YALNJ</text>
+        </view>
+        <navigator url='/pages/about/about' hover-class='none' class='f-24 c-fff text-center b-this1 pos-a'>了解更多
+        </navigator>
+    </view>
+    <view class='B'>
+        <text class='block f-28 c-666'>{{about_desc}}</text>
+        <image src='http://yns.nhzhonglian.com/images/xcx/img1.jpg' mode='{{w_fit}}'></image>
+    </view>
+</view>
+<view class='i3 w-93'>
+    <view class='T title1 pos-r'>
+        <view class='title'>
+            <text class='block cn f-60 c-333 blod'>资质荣誉</text>
+            <text class='block en f-24 c-999 text-u'>honor</text>
+        </view>
+        <view class='swiper-dot'>
+            <block wx:for='{{honor_list}}' wx:key=''>
+                <view class="dis-m {{item.index==honor_current?'active':''}}"></view>
+            </block>
+        </view>
+    </view>
+    <view class='B'>
+        <swiper autoplay='{{$true}}' duration='{{dur}}' class='honor-swiper' bindchange='honor_swiper'>
+            <block wx:for="{{honor_list}}" wx:key="">
+                <swiper-item>
+                    <block wx:for="{{item.list}}" wx:key="">
+                        <view class='dis-m honor-list' bindtap='viewimg' data-src='{{item.images}}'>
+                            <view class='honor-img'>
+                                <image src='{{item.images}}' mode='{{fit}}'></image>
+                            </view>
+                            <text class='block font-over1 f-24 c-666 text-center'>{{item.title}}</text>
+                        </view>
+                    </block>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>
+<view>
+    <view class='i4 b-this1 w-93 tel text-center f-0' bindtap='call1'>
+        <image src='http://yns.nhzhonglian.com/images/xcx/i1.png' mode='{{w_fit}}' class='dis-m'></image>
+        <text class='dis-m f-36 c-fff'>服务热线：{{hotline}}</text>
+    </view>
+    <view class='i4 b-this1 w-93 tel text-center f-0' bindtap='call2' style='border-radius:8rpx;'>
+        <image src='http://yns.nhzhonglian.com/images/xcx/i1.png' mode='{{w_fit}}' class='dis-m'></image>
+        <text class='dis-m f-36 c-fff'>业务员：{{salesman}}</text>
+        <view class='ewm'>
+            <image src='{{salesman_img}}' mode='{{w_fit}}' class=''></image>
+        </view>
+
+    </view>
+</view>
